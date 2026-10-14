@@ -1,0 +1,28 @@
+{
+  "title": "Off Frequency",
+  "description": "An original Friday Night Funkin' mod.",
+  "contributors": [
+    {
+      "name": "Mark 101"
+    },
+    {
+      "name": "The team behind The Broken Script"
+    },
+    {
+      "name": "Borists"
+    },
+    {
+      "name": "TheTerribleDev"
+    },
+    {
+      "name": "LoganMcOof"
+    }
+  ],
+  "api_version": "0.8.7",
+  "mod_version": "0.1.0",
+  "license": "UNLICENSED",
+  "metadata": {
+    "titleLogoX": "-10",
+    "titleLogoY": "-10"
+  }
+}

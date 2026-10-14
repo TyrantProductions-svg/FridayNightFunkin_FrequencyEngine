@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "name": "Oscillation",
+  "renderType": "multisparrow",
+  "assetPath": "characters/oscillation/battle/idle",
+  "startingAnimation": "idle",
+  "offsets": [0, 0],
+  "cameraOffsets": [0, 0],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "idle"
+    },
+    {
+      "name": "singLEFT",
+      "assetPath": "characters/oscillation/battle/singLEFT",
+      "prefix": "singLEFT"
+    },
+    {
+      "name": "singDOWN",
+      "assetPath": "characters/oscillation/battle/singDOWN",
+      "prefix": "singDOWN"
+    },
+    {
+      "name": "singUP",
+      "assetPath": "characters/oscillation/battle/singUP",
+      "prefix": "singUP"
+    },
+    {
+      "name": "singRIGHT",
+      "assetPath": "characters/oscillation/battle/singRIGHT",
+      "prefix": "singRIGHT"
+    },
+    {
+      "name": "singLEFTLockIn",
+      "assetPath": "characters/oscillation/battle/singLEFTLockIn",
+      "prefix": "singLEFTLockIn"
+    },
+    {
+      "name": "singDOWNLockIn",
+      "assetPath": "characters/oscillation/battle/singDOWNLockIn",
+      "prefix": "singDOWNLockIn"
+    },
+    {
+      "name": "singUPLockIn",
+      "assetPath": "characters/oscillation/battle/singUPLockIn",
+      "prefix": "singUPLockIn"
+    },
+    {
+      "name": "singRIGHTLockIn",
+      "assetPath": "characters/oscillation/battle/singRIGHTLockIn",
+      "prefix": "singRIGHTLockIn"
+    },
+    {
+      "name": "idleGoneNuts",
+      "assetPath": "characters/oscillation/battle/broGoneNuts",
+      "prefix": "BroGoneNuts"
+    },
+    {
+      "name": "singLEFTGoneNuts",
+      "assetPath": "characters/oscillation/battle/singLEFTGoneNuts",
+      "prefix": "singLEFTGoneNuts"
+    },
+    {
+      "name": "singDOWNGoneNuts",
+      "assetPath": "characters/oscillation/battle/singDOWNGoneNuts",
+      "prefix": "singDOWNGoneNuts"
+    },
+    {
+      "name": "singUPGoneNuts",
+      "assetPath": "characters/oscillation/battle/singUPGoneNuts",
+      "prefix": "singUPGoneNuts"
+    },
+    {
+      "name": "singRIGHTGoneNuts",
+      "assetPath": "characters/oscillation/battle/singRIGHTGoneNuts",
+      "prefix": "singRIGHTGoneNuts"
+    },
+    {
+      "name": "OzzySleepin",
+      "assetPath": "characters/oscillation/dj/OzzySleepin",
+      "prefix": "OzzySleepin"
+    },
+    {
+      "name": "OzzyWakingUp",
+      "assetPath": "characters/oscillation/dj/OzzyWakingUp",
+      "prefix": "OzzyWakingUp"
+    }
+  ]
+}

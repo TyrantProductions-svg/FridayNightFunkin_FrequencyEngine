@@ -1,0 +1,9 @@
+<TextureAtlas imagePath="voidRumble.png">
+  <SubTexture name="voidRumble0001" x="0" y="0" width="414" height="153" />
+  <SubTexture name="voidRumble0002" x="0" y="154" width="414" height="153" />
+  <SubTexture name="voidRumble0004" x="0" y="307" width="414" height="153" />
+  <SubTexture name="voidRumble0003" x="0" y="461" width="414" height="153" />
+  <SubTexture name="voidRumble0000" x="0" y="614" width="414" height="153" />
+  <SubTexture name="voidRumble0006" x="414" y="0" width="414" height="153" />
+  <SubTexture name="voidRumble0005" x="414" y="154" width="414" height="153" />
+</TextureAtlas>

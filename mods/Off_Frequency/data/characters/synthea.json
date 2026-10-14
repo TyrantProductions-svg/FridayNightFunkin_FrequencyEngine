@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "name": "Synthea",
+  "renderType": "multisparrow",
+  "assetPath": "characters/synthea/battle/idle",
+  "startingAnimation": "idle",
+  "offsets": [0, 0],
+  "cameraOffsets": [0, 0],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "idle"
+    },
+    {
+      "name": "singLEFT",
+      "assetPath": "characters/synthea/battle/singLEFT",
+      "prefix": "singLEFT"
+    },
+    {
+      "name": "singDOWN",
+      "assetPath": "characters/synthea/battle/singDOWN",
+      "prefix": "singDOWN"
+    },
+    {
+      "name": "singUP",
+      "assetPath": "characters/synthea/battle/singUP",
+      "prefix": "singUP"
+    },
+    {
+      "name": "singRIGHT",
+      "assetPath": "characters/synthea/battle/singRIGHT",
+      "prefix": "singRIGHT"
+    },
+    {
+      "name": "djIdle",
+      "assetPath": "characters/synthea/dj/smokinHotBabe",
+      "prefix": "smokinHotBabe",
+      "frameRate": 12,
+      "looped": true
+    }
+  ]
+}

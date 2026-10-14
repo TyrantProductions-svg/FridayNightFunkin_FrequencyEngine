@@ -1,0 +1,5 @@
+<TextureAtlas imagePath="singDOWN.png">
+  <SubTexture name="singDOWN0001" x="0" y="0" width="540" height="700" />
+  <SubTexture name="singDOWN0000" x="541" y="0" width="540" height="700" />
+  <SubTexture name="singDOWN0002" x="0" y="701" width="540" height="700" />
+</TextureAtlas>

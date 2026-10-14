@@ -1,0 +1,65 @@
+{
+  "people": [
+    {
+      "assetPath": "characters/synthea/dj/smokinHotBabe",
+      "x": 0,
+      "y": 0,
+      "right": 283,
+      "bottom": 10,
+      "scale": 0.58,
+      "animations": [
+        {
+          "name": "idle",
+          "prefix": "smokinHotBabe",
+          "frameRate": 12,
+          "looped": true
+        }
+      ],
+      "startingAnimation": "idle"
+    }
+  ],
+  "foregroundProps": [
+    {
+      "assetPath": "props/voidRumble",
+      "x": 0,
+      "y": 0,
+      "right": 10,
+      "bottom": 15,
+      "scale": 1.75,
+      "animations": [
+        {
+          "name": "idle",
+          "prefix": "voidRumble",
+          "frameRate": 12,
+          "looped": true
+        }
+      ],
+      "startingAnimation": "idle"
+    },
+    {
+      "assetPath": "characters/gf/GF_ass_sets",
+      "x": 20,
+      "y": 0,
+      "right": 30,
+      "bottom": 165,
+      "scale": 0.57,
+      "animations": [
+        {
+          "name": "danceLeft",
+          "prefix": "GF Dancing Beat",
+          "frameRate": 11,
+          "frameIndices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        },
+        {
+          "name": "danceRight",
+          "prefix": "GF Dancing Beat",
+          "frameRate": 11,
+          "frameIndices": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }
+      ],
+      "startingAnimation": "danceRight",
+      "danceAnimations": ["danceLeft", "danceRight"]
+    }
+  ],
+  "defaultDancer": false
+}
