@@ -14,6 +14,7 @@ import funkin.data.song.SongData.SongChartData;
 import funkin.data.song.SongData.SongMetadata;
 import funkin.data.song.SongRegistry;
 import funkin.data.song.importer.ChartManifestData;
+import funkin.modding.PolymodHandler;
 import thx.semver.Version as SemverVersion;
 
 /**
@@ -572,6 +573,183 @@ class ChartEditorImportExportHandler
       {
       }
     }
+  }
+
+  /**
+   * Saves the current chart data directly back to the mod source directory.
+   * This writes individual JSON files (not a .fnfc package) so the game
+   * will load the modified chart on next play.
+   *
+   * @param state The chart editor state.
+   * @param callback Callback with 'success', 'info' (cancelled), or 'error'.
+   */
+  public static function saveChartToMod(state:ChartEditorState, callback:String->Void):Void
+  {
+    var songId:String = state.currentSongId;
+    if (songId == null || songId == '')
+    {
+      state.error('Cannot Save to Mod', 'No song ID is available.');
+      callback('error');
+      return;
+    }
+
+    var modDir:Null<String> = resolveModDirectoryForSong(songId);
+    if (modDir == null)
+    {
+      state.error('Cannot Save to Mod',
+        'Could not determine the mod source directory for song "${songId}".\n'
+        + 'This song may be a base-game song, or the mod directory structure cannot be resolved.\n'
+        + 'Use the .fnfc export (Command+S) instead.');
+      callback('error');
+      return;
+    }
+
+    var resolvedModDir:String = modDir;
+    var songDataPath:String = Path.join([resolvedModDir, 'data', 'songs', songId]);
+
+    if (!FileUtil.directoryExists(songDataPath))
+    {
+      state.error('Cannot Save to Mod',
+        'The mod song directory does not exist:\n${songDataPath}\n'
+        + 'This song may not be a mod song, or the mod structure is incomplete.');
+      callback('error');
+      return;
+    }
+
+    var errors:Array<String> = [];
+    var filesWritten:Int = 0;
+
+    // Save metadata for each variation
+    for (variation in state.availableVariations)
+    {
+      var metadata:Null<SongMetadata> = state.songMetadata.get(variation);
+      if (metadata == null) continue;
+
+      metadata.version = funkin.data.song.SongRegistry.SONG_METADATA_VERSION;
+      metadata.generatedBy = funkin.data.song.SongRegistry.DEFAULT_GENERATEDBY;
+
+      var variSuffix:String = (variation == '' || variation == 'default' || variation == 'normal') ? '' : '-${variation}';
+      var metadataPath:String = Path.join([songDataPath, '${songId}-metadata${variSuffix}.json']);
+
+      try
+      {
+        FileUtil.writeStringToPath(metadataPath, metadata.serialize(), Force);
+        filesWritten++;
+      }
+      catch (e:Dynamic)
+      {
+        errors.push('Failed to write metadata file: ${metadataPath}\n  ${e}');
+      }
+    }
+
+    // Save chart data for each variation
+    for (variation in state.availableVariations)
+    {
+      var chartData:Null<SongChartData> = state.songChartData.get(variation);
+      if (chartData == null) continue;
+
+      chartData.version = funkin.data.song.SongRegistry.SONG_CHART_DATA_VERSION;
+      chartData.generatedBy = funkin.data.song.SongRegistry.DEFAULT_GENERATEDBY;
+
+      var variSuffix:String = (variation == '' || variation == 'default' || variation == 'normal') ? '' : '-${variation}';
+      var chartPath:String = Path.join([songDataPath, '${songId}-chart${variSuffix}.json']);
+
+      try
+      {
+        FileUtil.writeStringToPath(chartPath, chartData.serialize(), Force);
+        filesWritten++;
+      }
+      catch (e:Dynamic)
+      {
+        errors.push('Failed to write chart file: ${chartPath}\n  ${e}');
+      }
+    }
+
+    if (errors.length > 0)
+    {
+      var errorMsg:String = 'Some files failed to write:\n\n' + errors.join('\n\n');
+      if (filesWritten > 0)
+      {
+        errorMsg += '\n\n${filesWritten} file(s) were written successfully.';
+      }
+      state.error('Partial Save Failure', errorMsg);
+      callback('error');
+      return;
+    }
+
+    if (filesWritten == 0)
+    {
+      state.error('Nothing to Save', 'No chart or metadata data was found to save.');
+      callback('error');
+      return;
+    }
+
+    state.saveDataDirty = false;
+    state.success('Saved to Mod', 'Wrote ${filesWritten} file(s) to:\n${songDataPath}');
+    callback('success');
+  }
+
+  /**
+   * Attempts to resolve the mod directory that owns a given song ID.
+   * Searches through loaded mod directories for a matching song data folder.
+   *
+   * @param songId The song ID to find.
+   * @return The mod directory path, or null if not found.
+   */
+  public static function resolveModDirectoryForSong(songId:String):Null<String>
+  {
+    #if sys
+    var modRoot:String = PolymodHandler.MOD_FOLDER;
+
+    // Resolve MOD_FOLDER relative to game directory if it's a relative path
+    // (relative paths don't start with '/' on Unix or a drive letter on Windows)
+    if (!modRoot.startsWith('/') && modRoot.length > 1 && modRoot.charAt(1) != ':')
+    {
+      modRoot = Path.join([FileUtil.gameDirectory, modRoot]);
+    }
+
+    if (!FileUtil.directoryExists(modRoot))
+    {
+      return null;
+    }
+
+    // Search through loaded mod directories first (most reliable)
+    for (modDirName in PolymodHandler.loadedModDirs)
+    {
+      var modPath:String = Path.join([modRoot, modDirName]);
+      var songDataPath:String = Path.join([modPath, 'data', 'songs', songId]);
+
+      if (FileUtil.directoryExists(songDataPath))
+      {
+        return modPath;
+      }
+    }
+
+    // Fallback: scan all directories in the mod root
+    try
+    {
+      var modDirs:Array<String> = sys.FileSystem.readDirectory(modRoot);
+      for (modDirName in modDirs)
+      {
+        var modPath:String = Path.join([modRoot, modDirName]);
+        if (!FileUtil.directoryExists(modPath)) continue;
+
+        var songDataPath:String = Path.join([modPath, 'data', 'songs', songId]);
+        if (FileUtil.directoryExists(songDataPath))
+        {
+          return modPath;
+        }
+      }
+    }
+    catch (e:Dynamic)
+    {
+      return null;
+    }
+
+    return null;
+    #else
+    return null;
+    #end
   }
 }
 #end

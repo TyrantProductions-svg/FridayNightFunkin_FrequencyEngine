@@ -21,6 +21,9 @@
             <button allowFocus="false" id="difficultyToolboxSaveChart" text="Save Chart File" tooltip="Save just the JSON chart data for the current variation." />
         </hbox>
         <hbox>
+            <button allowFocus="false" id="difficultyToolboxSaveToMod" text="Save to Mod" tooltip="Save all chart and metadata files back to the mod source directory." />
+        </hbox>
+        <hbox>
             <button allowFocus="false" id="difficultyToolboxLoadMetadata" text="Load Metadata File" tooltip="Load a variation's metadata directly from a JSON file." />
             <button allowFocus="false" id="difficultyToolboxLoadChart" text="Load Chart File" tooltip="Load a variation's chart data directly from a JSON file." />
         </hbox>

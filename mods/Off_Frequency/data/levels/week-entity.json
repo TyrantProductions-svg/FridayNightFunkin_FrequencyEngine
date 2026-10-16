@@ -3,7 +3,7 @@
   "name": "WEEK ENTITY",
   "titleAsset": "storymenu/titles/week-entity",
   "props": [],
-  "visible": false,
+  "visible": true,
   "songs": [
     "dreaming",
     "oscillation",

@@ -13,6 +13,7 @@ import haxe.ui.components.DropDown;
 import haxe.ui.components.HorizontalSlider;
 import funkin.util.VersionUtil;
 import funkin.util.FileUtil;
+import funkin.ui.debug.charting.handlers.ChartEditorImportExportHandler;
 import openfl.net.FileReference;
 import haxe.ui.containers.dialogs.MessageBox.MessageBoxType;
 import haxe.ui.components.Label;
@@ -39,6 +40,7 @@ class ChartEditorDifficultyToolbox extends ChartEditorBaseToolbox
   var difficultyToolboxRemoveDifficulty:Button;
   var difficultyToolboxSaveMetadata:Button;
   var difficultyToolboxSaveChart:Button;
+  var difficultyToolboxSaveToMod:Button;
   var difficultyToolboxLoadMetadata:Button;
   var difficultyToolboxLoadChart:Button;
 
@@ -139,6 +141,14 @@ class ChartEditorDifficultyToolbox extends ChartEditorBaseToolbox
             case 'error':
               chartEditorState.error('Failure', 'Failed to write file (${chartEditorState.currentSongId}-chart$vari.json).');
           }
+        });
+    };
+
+    difficultyToolboxSaveToMod.onClick = function(_:UIEvent)
+    {
+      ChartEditorImportExportHandler.saveChartToMod(chartEditorState, function(notification:String)
+        {
+          // In-memory changes are preserved regardless of save outcome.
         });
     };
 

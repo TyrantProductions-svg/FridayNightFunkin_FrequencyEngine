@@ -54,7 +54,7 @@ class PolymodHandler
   /**
    * Where relative to the executable that mods are located.
    */
-  static final MOD_FOLDER:String =
+  public static final MOD_FOLDER:String =
     #if (REDIRECT_ASSETS_FOLDER && mac)
     '../../../../../../../mods'
     #elseif REDIRECT_ASSETS_FOLDER
@@ -376,7 +376,7 @@ class PolymodHandler
     // `haxe.Http`
     // An alias for `sys.Http`, which is also a blacklisted package.
     Polymod.blacklistImport('haxe.Http');
-    
+
     // `haxe.Unserializer`
     // Unserializer.DEFAULT_RESOLVER.resolveClass() can access blacklisted packages
     Polymod.blacklistImport('haxe.Unserializer');

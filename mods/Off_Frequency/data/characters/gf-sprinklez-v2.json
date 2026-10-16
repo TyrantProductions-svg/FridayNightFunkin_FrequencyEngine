@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "Girlfriend (Sprinklez V2)",
   "renderType": "multisparrow",
-  "assetPath": "characters/gf/gf_sprinklezV2",
+  "assetPath": "characters/gf/gf_sprinklez",
   "flipX": true,
   "singTime": 6.1,
   "scale": 0.56,

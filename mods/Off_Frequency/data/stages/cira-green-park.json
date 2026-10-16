@@ -52,21 +52,21 @@
   "characters": {
     "bf": {
       "zIndex": 50,
-      "position": [741, 610],
+      "position": [-41, 610],
       "scale": 0.8375,
-      "cameraOffsets": [-100, -100]
+      "cameraOffsets": [-28, -100]
     },
     "dad": {
       "zIndex": 50,
-      "position": [319, 623],
+      "position": [219, 623],
       "scale": 0.5115,
-      "cameraOffsets": [150, -100]
+      "cameraOffsets": [37, -100]
     },
     "gf": {
       "zIndex": 40,
       "position": [853, 412],
       "scale": 0.364,
-      "cameraOffsets": [0, 0]
+      "cameraOffsets": [47, 50]
     }
   }
 }
