@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "WEEK ENTITY",
+  "titleAsset": "storymenu/titles/week-entity",
+  "props": [],
+  "visible": false,
+  "songs": [
+    "dreaming",
+    "oscillation",
+    "power-couple"
+  ],
+  "background": "#358A58"
+}

@@ -20,6 +20,8 @@ An original Friday Night Funkin' mod in development.
 - Borists — [Girlfriend With No Speakers (For Psych Engine)](https://gamebanana.com/mods/366075)
 - TheTerribleDev — [Playable GF's parts](https://gamebanana.com/tools/11210)
 - LoganMcOof — [UPDATED Girlfriend Soundfont 2024 With Atonals](https://gamebanana.com/tools/7343)
+- Chibisprinklez and RixFX — GF Reskin V3 (CC BY-NC-ND 4.0; the atlas and XML are
+  redistributed unchanged for non-commercial use)
 
 These credits are included at the project creator's request. Specific contributions
 and individual team member names can be added as they are confirmed.
@@ -27,6 +29,69 @@ and individual team member names can be added as they are confirmed.
 ## Compatibility
 
 This mod targets the Friday Night Funkin' 0.8.7 mod API.
+
+## Story week scaffold
+
+`data/levels/week-entity.json` defines the planned three-song story week in order:
+`Dreaming`, `Oscillation`, and `Power Couple`. The engine already discovers
+mod-provided level JSON files and lists visible levels in Story Mode, so no
+separate week-registration code is needed.
+
+The week is currently hidden because `Oscillation` and `Power Couple` do not
+have song metadata, charts, or music yet, and
+`images/storymenu/titles/week-entity.png` is not present. Keep `visible` set to
+`false` until all three songs and the week card are ready. The opening and
+between-song scenes, Oscillation's chart-timed forms, and section-based singer
+changes for `Power Couple` still need to be implemented and tested separately.
+
+## Dreaming demo song
+
+`data/songs/dreaming/dreaming-metadata.json` registers Dreaming at 140 BPM with
+the Cira Green Park stage, GF Sprinklez V2 as the player character, the
+stock Boyfriend character in the stage's support-character slot, and Synthea as
+the opponent. `data/songs/dreaming/dreaming-chart.json` is an empty Normal chart
+scaffold intended to be filled in using the Chart Editor. The instrumental and
+Synthea vocal are in `songs/dreaming/`, along with GF's
+`Voices-gf-sprinklez-v2.ogg` player vocal track. Because GF is the intended
+singer, the opponent vocal track is explicitly disabled. The chart still needs
+to be authored, and the artist credit is unknown. The full Story Mode week
+remains hidden until its other songs and week card are ready.
+
+## Cira Green Park stage
+
+`data/stages/cira-green-park.json` sets up the supplied Cira Green Park
+background, the existing `voidRumble` DJ rig, and Oscillation's looping
+`OzzySleepin` DJ animation. The DJ rig is currently scaled to 1.2035 (120.35%
+of its original asset size). It uses camera zoom to frame a closer portion of the
+background rather than resizing the background alone; the zoom affects all
+stage elements. The background image is stored at `images/stages/cira-green-park.png`; song
+metadata must set `playData.stage` to `cira-green-park` to use this stage.
+
+To adjust gameplay locations, edit the stage's `characters` coordinates:
+`bf` is the player-side character (Sprinklez GF for Dreaming), `dad` is the
+opponent, and `gf` is the stage's support-character slot (Boyfriend for
+Dreaming). The intended draw order is Synthea and playable GF (z-index 50),
+support BF (40), DJ rig (30), sleeping Oscillation (20), then the background
+(0). The `props` entries control the background, DJ rig, and Ozzy. Change their
+`position`, `scale`, and `zIndex` values to move, resize, or layer them. The
+Stage Editor can preview these placements. For Dreaming, the playable GF's
+character-data scale is `0.56` and the player-side stage multiplier is `0.8375`,
+for an effective scale of about 46.9% of atlas size. The support BF uses a
+mod-specific character definition with the stock BF atlas and faces left; it
+uses the regular idle pose, not a seated animation.
+
+Animation definitions live in `data/characters/` and select animation names
+and atlas frame prefixes. For example, Dreaming's sleeping DJ prop selects
+`OzzySleepin` in the stage's `props` list; battle character poses are defined
+in their character JSON files.
+
+Dreaming's metadata sets `characters.player` to `gf-sprinklez-v2` and
+`characters.girlfriend` to `bf-cira-park`. Sprinklez is playable; this
+mod-specific support character reuses the stock BF atlas with a left-facing
+orientation. The mod does not replace the base game's `bf` or `gf` character
+definitions or assets. With Off Frequency disabled, its song/stage/character
+overrides are not loaded and the base game continues using its original
+characters.
 
 ## Custom title logo
 
@@ -102,6 +167,16 @@ correct and PNG/XML capitalization consistent for cross-platform builds.
 
 ## Custom Girlfriend
 
-`data/characters/gf.json` overrides the base-game Girlfriend with the speaker-free
-Sparrow atlas at `images/characters/gf/GF_ass_sets.png`. The title screen uses the
-same atlas for her dance, so gameplay and title visuals stay consistent.
+`data/characters/gf-off-frequency.json` defines the speaker-free GF using the
+Sparrow atlas at `images/characters/gf/GF_ass_sets.png`. The title screen uses
+the same atlas for her dance, so gameplay and title visuals stay consistent.
+
+`data/characters/gf-sprinklez-v2.json` defines the playable GF singer for the
+Dreaming demo, using the unmodified `images/characters/gf/gf_sprinklezV2`
+atlas and its singing, miss, dance, and death animations. Set the song's player
+character to `gf-sprinklez-v2`. Dreaming currently uses stock Boyfriend in the
+stage's support-character slot; the speaker-free GF character remains available
+for the title screen or other stages. The credited reskin is licensed
+CC BY-NC-ND 4.0, so this redistribution is non-commercial and the atlas/XML
+must remain unmodified. The atlas is 8192x4096; test it on lower-spec graphics
+hardware before promising support for older devices.

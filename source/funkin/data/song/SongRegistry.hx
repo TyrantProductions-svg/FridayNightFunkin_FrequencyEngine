@@ -11,6 +11,7 @@ import funkin.play.song.Song;
 import funkin.util.assets.DataAssets;
 import funkin.util.VersionUtil;
 import funkin.util.tools.ISingleton;
+import funkin.util.FileUtil;
 import funkin.data.DefaultRegistryImpl;
 
 using funkin.data.song.migrator.SongDataMigrator;
@@ -495,6 +496,36 @@ class SongRegistry extends BaseRegistry<Song, SongMetadata, SongEntryParams> imp
     var rawJson:String = openfl.Assets.getText(entryFilePath);
     if (rawJson == null) return null;
     rawJson = rawJson.trim();
+
+    // Check if this is a ZIP archive (starts with "PK")
+    if (rawJson.startsWith("PK"))
+    {
+      // Extract the JSON content from the ZIP archive using existing FileUtil
+      var zipBytes:haxe.io.Bytes = openfl.Assets.getBytes(entryFilePath);
+      try
+      {
+        // Convert haxe.io.Bytes to lime.utils.Bytes for FileUtil
+        var limeBytes:lime.utils.Bytes = lime.utils.Bytes.ofData(zipBytes.getData());
+        var entries = FileUtil.readZIPFromBytes(limeBytes);
+        for (entry in entries)
+        {
+          if (StringTools.endsWith(entry.fileName, ".json"))
+          {
+            if (entry.data != null)
+            {
+              var content = entry.data.toString();
+              return {fileName: entryFilePath, contents: content};
+            }
+          }
+        }
+      }
+      catch (e:Dynamic)
+      {
+        trace('Failed to extract ZIP chart: $e');
+        return null;
+      }
+    }
+
     return {fileName: entryFilePath, contents: rawJson};
   }
 

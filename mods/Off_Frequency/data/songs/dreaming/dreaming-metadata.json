@@ -1,0 +1,29 @@
+{
+  "version": "2.2.4",
+  "songName": "Dreaming",
+  "artist": "TyrantProductions",
+  "timeFormat": "ms",
+  "offsets": {},
+  "playData": {
+    "difficulties": ["normal"],
+    "characters": {
+      "player": "gf-sprinklez-v2",
+      "girlfriend": "bf-cira-park",
+      "opponent": "synthea",
+      "opponentVocals": ["synthea"]
+    },
+    "stage": "cira-green-park",
+    "noteStyle": "funkin",
+    "ratings": {
+      "normal": 1
+    }
+  },
+  "generatedBy": "Frequency Engine - Dreaming demo scaffold",
+  "timeChanges": [
+    {
+      "t": 0,
+      "bpm": 140,
+      "bt": [4, 4, 4, 4]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Cira Green Park)",
+  "renderType": "multianimateatlas",
+  "assetPath": "shared:characters/bf",
+  "flipX": false,
+  "startingAnimation": "idle",
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Idle"
+    }
+  ]
+}
