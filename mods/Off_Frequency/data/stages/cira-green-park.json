@@ -61,12 +61,12 @@
       "zIndex": 50,
       "position": [415, 625],
       "scale": 0.5115,
-      "cameraOffsets": [237, -100]
+      "cameraOffsets": [267, -100]
     },
     "gf": {
       "zIndex": 40,
       "position": [874, 414],
-      "scale": 0.364,
+      "scale": 0.398,
       "cameraOffsets": [237, 50]
     }
   }

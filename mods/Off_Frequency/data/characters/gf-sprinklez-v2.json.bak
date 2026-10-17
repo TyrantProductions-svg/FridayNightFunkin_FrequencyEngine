@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "name": "Girlfriend (Sprinklez V2)",
+  "renderType": "multisparrow",
+  "assetPath": "characters/gf/gf_sprinklez",
+  "flipX": true,
+  "singTime": 6.1,
+  "scale": 0.56,
+  "startingAnimation": "danceRight",
+  "animations": [
+    {
+      "name": "danceLeft",
+      "prefix": "gfDanceLeft"
+    },
+    {
+      "name": "danceRight",
+      "prefix": "gfDanceRight"
+    },
+    {
+      "name": "singUP",
+      "prefix": "GFup",
+      "offsets": [22, 28]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "GFdown",
+      "offsets": [33, -27]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "GFleft",
+      "offsets": [81, -22]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "GFright",
+      "offsets": [-62, -37]
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "upMISS",
+      "offsets": [40, 58]
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "downMISS",
+      "offsets": [41, -15]
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "left MISS",
+      "offsets": [83, -10]
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "rightMISS",
+      "offsets": [-59, -40]
+    },
+    {
+      "name": "firstDeath",
+      "prefix": "firstDeath",
+      "offsets": [62, -5]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "deathLoop",
+      "offsets": [28, -5]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "deathConfirm",
+      "offsets": [27, -4],
+      "looped": true
+    },
+    {
+      "name": "hey",
+      "prefix": "hey",
+      "offsets": [10, -7]
+    }
+  ]
+}
