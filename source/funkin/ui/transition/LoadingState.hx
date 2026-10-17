@@ -104,16 +104,29 @@ class LoadingState extends MusicBeatSubState
     });
   }
 
+  function registerSoundInLibrary(path:String):Void
+  {
+    var library = Assets.getLibrary('songs');
+    if (library == null) return;
+
+    var symbolPath = path.split(':').pop();
+    if (symbolPath == null) return;
+
+    @:privateAccess
+    if (library.types.exists(symbolPath)) return;
+
+    @:privateAccess
+    library.types.set(symbolPath, SOUND);
+    @:privateAccess
+    library.pathGroups.set(symbolPath, [library.__cacheBreak(symbolPath)]);
+  }
+
   function checkLoadSong(path:String):Void
   {
+    registerSoundInLibrary(path);
+
     if (!OpenFLAssets.cache.hasSound(path))
     {
-      var library = Assets.getLibrary('songs');
-      var symbolPath = path.split(':').pop();
-      // @:privateAccess
-      // library.types.set(symbolPath, SOUND);
-      // @:privateAccess
-      // library.pathGroups.set(symbolPath, [library.__cacheBreak(symbolPath)]);
       var callback = callbacks?.add('song:' + path);
       Assets.loadSound(path).onComplete(function(_)
       {
