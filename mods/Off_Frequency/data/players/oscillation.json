@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "Oscillation",
+  "ownedChars": [
+    "oscillation",
+    "oscillation-locked-in",
+    "oscillation-gone-nuts"
+  ],
+  "showUnownedChars": true,
+  "unlocked": true,
+  "freeplayStyle": "bf",
+  "stickerPack": "default"
+}

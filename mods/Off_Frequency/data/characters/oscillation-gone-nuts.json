@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "name": "Oscillation (Gone Nuts)",
+  "renderType": "multisparrow",
+  "assetPath": "characters/oscillation/battle/broGoneNuts",
+  "startingAnimation": "idleGoneNuts",
+  "offsets": [0, 0],
+  "cameraOffsets": [0, 0],
+  "scale": 1.4,
+  "animations": [
+    {
+      "name": "idle",
+      "assetPath": "characters/oscillation/battle/broGoneNuts",
+      "prefix": "BroGoneNuts",
+      "frameRate": 19,
+      "looped": true
+    },
+    {
+      "name": "idleGoneNuts",
+      "assetPath": "characters/oscillation/battle/broGoneNuts",
+      "prefix": "BroGoneNuts",
+      "frameRate": 19,
+      "looped": true
+    },
+    {
+      "name": "singLEFT",
+      "assetPath": "characters/oscillation/battle/singLEFTGoneNuts",
+      "prefix": "singLEFTGoneNuts",
+      "frameRate": 12
+    },
+    {
+      "name": "singDOWN",
+      "assetPath": "characters/oscillation/battle/singDOWNGoneNuts",
+      "prefix": "singDOWNGoneNuts",
+      "frameRate": 12
+    },
+    {
+      "name": "singUP",
+      "assetPath": "characters/oscillation/battle/singUPGoneNuts",
+      "prefix": "singUPGoneNuts",
+      "frameRate": 12
+    },
+    {
+      "name": "singRIGHT",
+      "assetPath": "characters/oscillation/battle/singRIGHTGoneNuts",
+      "prefix": "singRIGHTGoneNuts",
+      "frameRate": 12
+    }
+  ]
+}

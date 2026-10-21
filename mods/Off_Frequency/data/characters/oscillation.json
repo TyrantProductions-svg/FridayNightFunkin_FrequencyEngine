@@ -9,82 +9,44 @@
   "animations": [
     {
       "name": "idle",
-      "prefix": "idle"
+      "prefix": "idle",
+      "frameRate": 19
     },
     {
       "name": "singLEFT",
       "assetPath": "characters/oscillation/battle/singLEFT",
-      "prefix": "singLEFT"
+      "prefix": "singLEFT",
+      "frameRate": 12
     },
     {
       "name": "singDOWN",
       "assetPath": "characters/oscillation/battle/singDOWN",
-      "prefix": "singDOWN"
+      "prefix": "singDOWN",
+      "frameRate": 12
     },
     {
       "name": "singUP",
       "assetPath": "characters/oscillation/battle/singUP",
-      "prefix": "singUP"
+      "prefix": "singUP",
+      "frameRate": 12
     },
     {
       "name": "singRIGHT",
       "assetPath": "characters/oscillation/battle/singRIGHT",
-      "prefix": "singRIGHT"
-    },
-    {
-      "name": "singLEFTLockIn",
-      "assetPath": "characters/oscillation/battle/singLEFTLockIn",
-      "prefix": "singLEFTLockIn"
-    },
-    {
-      "name": "singDOWNLockIn",
-      "assetPath": "characters/oscillation/battle/singDOWNLockIn",
-      "prefix": "singDOWNLockIn"
-    },
-    {
-      "name": "singUPLockIn",
-      "assetPath": "characters/oscillation/battle/singUPLockIn",
-      "prefix": "singUPLockIn"
-    },
-    {
-      "name": "singRIGHTLockIn",
-      "assetPath": "characters/oscillation/battle/singRIGHTLockIn",
-      "prefix": "singRIGHTLockIn"
-    },
-    {
-      "name": "idleGoneNuts",
-      "assetPath": "characters/oscillation/battle/broGoneNuts",
-      "prefix": "BroGoneNuts"
-    },
-    {
-      "name": "singLEFTGoneNuts",
-      "assetPath": "characters/oscillation/battle/singLEFTGoneNuts",
-      "prefix": "singLEFTGoneNuts"
-    },
-    {
-      "name": "singDOWNGoneNuts",
-      "assetPath": "characters/oscillation/battle/singDOWNGoneNuts",
-      "prefix": "singDOWNGoneNuts"
-    },
-    {
-      "name": "singUPGoneNuts",
-      "assetPath": "characters/oscillation/battle/singUPGoneNuts",
-      "prefix": "singUPGoneNuts"
-    },
-    {
-      "name": "singRIGHTGoneNuts",
-      "assetPath": "characters/oscillation/battle/singRIGHTGoneNuts",
-      "prefix": "singRIGHTGoneNuts"
+      "prefix": "singRIGHT",
+      "frameRate": 12
     },
     {
       "name": "OzzySleepin",
       "assetPath": "characters/oscillation/dj/OzzySleepin",
-      "prefix": "OzzySleepin"
+      "prefix": "OzzySleepin",
+      "frameRate": 12
     },
     {
       "name": "OzzyWakingUp",
       "assetPath": "characters/oscillation/dj/OzzyWakingUp",
-      "prefix": "OzzyWakingUp"
+      "prefix": "OzzyWakingUp",
+      "frameRate": 12
     }
   ]
 }

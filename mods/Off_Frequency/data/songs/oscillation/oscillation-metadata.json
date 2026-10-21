@@ -1,0 +1,36 @@
+{
+ "version": "2.2.4",
+ "songName": "Oscillation",
+ "artist": "TyrantProductions",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "normal"
+  ],
+  "characters": {
+   "player": "bf",
+   "girlfriend": "gf-off-frequency",
+   "opponent": "oscillation-locked-in",
+   "opponentVocals": [
+    "oscillation"
+   ],
+   "playerVocals": [
+    "boyfriend"
+   ]
+  },
+  "stage": "oscillation-stage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "normal": 1
+  }
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.7 (main : d03d6d9) PROTOTYPE",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 145,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

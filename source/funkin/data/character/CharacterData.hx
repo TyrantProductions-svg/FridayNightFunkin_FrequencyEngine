@@ -239,6 +239,12 @@ class CharacterDataParser
     var charData:Null<CharacterData> = characterCache.get(charId);
     var charScriptClass:Null<String> = characterScriptedClass.get(charId);
 
+    // Fallback to the characterScriptedClass field in the character JSON
+    if (charScriptClass == null && charData != null)
+    {
+      charScriptClass = charData.characterScriptedClass;
+    }
+
     var char:Null<BaseCharacter> = null;
 
     if (charScriptClass != null)
@@ -733,6 +739,14 @@ typedef CharacterData =
    * - PACKER: Path to retrieve both the spritesheet and the TXT data from.
    */
   var assetPath:String;
+
+  /**
+   * Optional path to a scripted character class to use instead of the default behavior.
+   * If specified, this class will be used to create the character instance.
+   * @default null
+   */
+  @:optional
+  var characterScriptedClass:Null<String>;
 
   /**
    * The scale of the graphic as a float.

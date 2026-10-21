@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "name": "Oscillation (Locked In)",
+  "renderType": "multisparrow",
+  "assetPath": "characters/oscillation/battle/idle",
+  "startingAnimation": "idle",
+  "offsets": [0, 0],
+  "cameraOffsets": [0, 0],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "idle",
+      "frameRate": 19
+    },
+    {
+      "name": "singLEFT",
+      "assetPath": "characters/oscillation/battle/singLEFTLockIn",
+      "prefix": "singLEFTLockIn",
+      "frameRate": 12
+    },
+    {
+      "name": "singDOWN",
+      "assetPath": "characters/oscillation/battle/singDOWNLockIn",
+      "prefix": "singDOWNLockIn",
+      "frameRate": 12
+    },
+    {
+      "name": "singUP",
+      "assetPath": "characters/oscillation/battle/singUPLockIn",
+      "prefix": "singUPLockIn",
+      "frameRate": 12
+    },
+    {
+      "name": "singRIGHT",
+      "assetPath": "characters/oscillation/battle/singRIGHTLockIn",
+      "prefix": "singRIGHTLockIn",
+      "frameRate": 12
+    }
+  ]
+}

@@ -622,6 +622,78 @@ class Stage extends FlxSpriteGroup implements IPlayStateScriptedClass implements
   }
 
   /**
+   * Swaps the dad character with a preloaded instance without resetting it.
+   * Preserves position, scale, camera focus, and animation state.
+   * @param newCharacter The preloaded character to swap in.
+   */
+  public function swapDadCharacter(newCharacter:BaseCharacter):Void
+  {
+    if (newCharacter == null) return;
+
+    var oldDad = getDad(true);
+    if (oldDad == null)
+    {
+      addCharacter(newCharacter, DAD);
+      return;
+    }
+
+    // Save camera references BEFORE removal, since Stage.remove() sets cameras = null.
+    var savedCameras = oldDad.cameras;
+    var savedCameraFocusX = oldDad.cameraFocusPoint.x;
+    var savedCameraFocusY = oldDad.cameraFocusPoint.y;
+
+    var oldDadRef = oldDad; // Keep reference after pop for data copying.
+
+    oldDad.kill();
+
+    var stageCharData:StageDataCharacter = _data.characters.dad;
+
+    // Reset the new character first so its animation/origin are initialized,
+    // but skip the position reset since we'll copy from the old character.
+    newCharacter.resetCharacter(true);
+
+    // Apply the incoming character's configured scale before positioning,
+    // following the same convention as addCharacter() (Stage.hx:458-459).
+    // Preloaded characters never go through addCharacter(), so their scale
+    // was never applied. Use 1.0 as the default if the character JSON has no scale.
+    var charScale:Float = newCharacter.getBaseScale();
+    if (charScale <= 0) charScale = 1.0;
+    var finalScale = charScale * stageCharData.scale;
+    newCharacter.setScale(finalScale);
+
+    newCharacter.x = oldDadRef.x;
+    newCharacter.y = oldDadRef.y;
+    newCharacter.flipX = oldDadRef.flipX;
+    newCharacter.holdTimer = oldDadRef.holdTimer;
+    newCharacter.cameraFocusPoint.x = savedCameraFocusX;
+    newCharacter.cameraFocusPoint.y = savedCameraFocusY;
+    newCharacter.cameras = savedCameras;
+    newCharacter.characterType = DAD;
+    newCharacter.flipX = oldDadRef.getDataFlipX();
+    newCharacter.name = 'dad';
+
+    this.characters.set('dad', newCharacter);
+    newCharacter.zIndex = stageCharData.zIndex;
+    newCharacter.scrollFactor.set(stageCharData.scroll[0], stageCharData.scroll[1]);
+    newCharacter.alpha = stageCharData.alpha;
+    newCharacter.angle = stageCharData.angle;
+
+    // Update originalPosition so that resetCameraFocusPoint() and future
+    // position computations use the correct stage position rather than the
+    // stale (0, 0) from preload.
+    newCharacter.originalPosition.set(newCharacter.x, newCharacter.y);
+    newCharacter.resetCameraFocusPoint();
+
+    // Revive the character before adding it to the group.
+    // Preloaded instances are killed when swapped out, so swapping back
+    // to a previously used form (e.g. Normal after Locked In) requires
+    // an explicit revive since FlxSpriteGroup.add() does not revive.
+    newCharacter.revive();
+    this.add(newCharacter);
+    ScriptEventDispatcher.callEvent(newCharacter, new ScriptEvent(ADDED, false));
+  }
+
+  /**
    * Retrieve a specific prop by the name assigned in the JSON file.
    * @param name The name of the prop to retrieve.
    * @return The corresponding FlxSprite.

@@ -37,6 +37,7 @@ import funkin.modding.events.ScriptEvent;
 import funkin.api.newgrounds.Events;
 import funkin.modding.events.ScriptEventDispatcher;
 import funkin.play.character.BaseCharacter;
+import funkin.play.character.OscillationCharacterManager;
 import funkin.data.character.CharacterData.CharacterDataParser;
 import funkin.play.components.HealthIcon;
 import funkin.play.components.PopUpStuff;
@@ -1050,6 +1051,8 @@ class PlayState extends MusicBeatSubState
 
       currentStage?.resetStage();
 
+      OscillationCharacterManager.reset();
+
       dispatchEvent(retryEvent);
 
       resetCamera();
@@ -1201,6 +1204,13 @@ class PlayState extends MusicBeatSubState
 
     // Attempt to pause the game.
     if ((controls.PAUSE_P || androidPause || pauseButtonCheck)) pause();
+
+    // Oscillation character transformation system
+    if (OscillationCharacterManager.isActive && !isGamePaused && !startingSong)
+    {
+      var currentBar:Int = Std.int(Conductor.instance.currentMeasure) + 1;
+      OscillationCharacterManager.updateForm(currentBar);
+    }
 
     #if mobile
     if (justUnpaused)
@@ -2229,6 +2239,11 @@ class PlayState extends MusicBeatSubState
         #if FEATURE_DEBUG_FUNCTIONS
         FlxG.console.registerObject('dad', dad);
         #end
+
+        if (currentCharacterData.opponent == 'oscillation-locked-in')
+        {
+          OscillationCharacterManager.preloadAll(currentStage);
+        }
       }
 
       // Rearrange by z-indexes.

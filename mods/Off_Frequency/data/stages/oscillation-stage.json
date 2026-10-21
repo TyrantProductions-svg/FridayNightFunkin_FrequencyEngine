@@ -1,0 +1,73 @@
+{
+  "version": "1.0.2",
+  "name": "Oscillation Stage",
+  "directory": "shared",
+  "cameraZoom": 1.5,
+  "props": [
+    {
+      "name": "parkBackground",
+      "assetPath": "stages/cira-green-park",
+      "position": [-16, 5],
+      "scale": 0.9375,
+      "zIndex": 0,
+      "scroll": [1, 1],
+      "animations": [],
+      "startingAnimation": ""
+    },
+    {
+      "name": "syntheaDJ",
+      "assetPath": "characters/synthea/dj/smokinHotBabe",
+      "position": [488, 130],
+      "scale": 0.3984,
+      "zIndex": 20,
+      "scroll": [1, 1],
+      "animations": [
+        {
+          "name": "idle",
+          "prefix": "smokinHotBabe",
+          "frameRate": 12,
+          "looped": true
+        }
+      ],
+      "startingAnimation": "idle"
+    },
+    {
+      "name": "djRig",
+      "assetPath": "props/voidRumble",
+      "position": [371, 220],
+      "scale": 1.2035,
+      "zIndex": 30,
+      "scroll": [1, 1],
+      "danceEvery": 1,
+      "animations": [
+        {
+          "name": "idle",
+          "prefix": "voidRumble",
+          "frameRate": 12,
+          "looped": true
+        }
+      ],
+      "startingAnimation": "idle"
+    }
+  ],
+  "characters": {
+    "bf": {
+      "zIndex": 50,
+      "position": [807, 610],
+      "scale": 0.556125,
+      "cameraOffsets": [128, -100]
+    },
+    "dad": {
+      "zIndex": 50,
+      "position": [420, 581],
+      "scale": 0.43764,
+      "cameraOffsets": [267, -100]
+    },
+    "gf": {
+      "zIndex": 40,
+      "position": [786, 298],
+      "scale": 0.408,
+      "cameraOffsets": [237, 50]
+    }
+  }
+}
